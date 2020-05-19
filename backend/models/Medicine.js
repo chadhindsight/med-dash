@@ -16,6 +16,8 @@ const MedSchema = mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-        }
+        },
+    available: Boolean
 })
 
+module.exports = model('Medicine', userSchema);
