@@ -7,9 +7,15 @@ const users = [
     },
     {
         email: 'giovanni@gmail.com',
-        name: 'giovanni Totti',
+        name: 'Giovanni Totti',
         primaryPharmacy: "Leeroy Pharmacy",
-        medications: ["5ec403fb3585906a9c4aa04a", '5ec403fb3585906a9c4aa044', '5ec403fb3585906a9c4aa056'],
+        medications: ["5ec403fb3585906a9c4aa04a"],
+    },
+    {
+        email: 'bradhindsight.com',
+        name: 'Bradford Chang',
+        primaryPharmacy: "Duane Reade",
+        medications: ["5ec403fb3585906a9c4aa065", '5ec403fb3585906a9c4aa056'],
     },
     {
         email: 'weeeeeeeeeed@hotmail.com',
@@ -32,13 +38,14 @@ const users = [
     {
         email: 'DJceecee@hotmail.com',
         name: 'Cirian Murphy',
-        primaryPharmacy: String,
+        primaryPharmacy: "Walgreens",
         medications: ["5ec403fb3585906a9c4aa04a", '5ec403fb3585906a9c4aa044', '5ec403fb3585906a9c4aa056'],
     },
     {
         email: 'myFave@gmail.com',
         name: 'Nicolle',
-        primaryPharmacy: String,
-        medications: ["5ec403fb3585906a9c4aa04a", "5ec403fb3585906a9c4aa072", "5ec403fb3585906a9c4aa07c"]
+        primaryPharmacy: "Walgreens",
+        medications: ["5ec403fb3585906a9c4aa04a", "5ec403fb3585906a9c4aa07c"]
     }
 ]
+module.exports = users
