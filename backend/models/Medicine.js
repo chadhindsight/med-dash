@@ -17,7 +17,9 @@ const MedSchema = mongoose.Schema({
         required: true,
         default: 0
         },
-    available: Boolean
+    available: Boolean,
+    // Multiple users might be associated with the same medication
+    user_id: [String]
 })
 
 module.exports = model('Medicine', userSchema);
