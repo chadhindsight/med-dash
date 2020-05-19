@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const passport = require('../config/passport');
 
+//Since a lot of user specific routes are already here, use this file to do your user related stuff
 router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then((user) => { 
@@ -39,8 +40,16 @@ router.get('/profile', isAuth, (req, res, next) => {
     .catch((err) => res.status(500).json({ err }));
 });
 
+// Edit User Route
+router.post('/profile/edit', isAuth, (req, res, next) =>{
+  User.findByIdAndUpdate(req.user._id, req.body, {new: true})
+    .then((user) => res.status(200).json({ user }))
+    .catch((err) => res.status(500).json({ err }));
+})
+
+
 function isAuth(req, res, next) {
-  req.isAuthenticated() ? next() : res.status(401).json({ msg: 'Log in first' });
+  req.isAuthenticated() ? next() : res.status(304).json({ msg: 'Log in first' });
 }
 
 module.exports = router;
