@@ -20,6 +20,9 @@ const actions = {
   },
   logOut: async () => {
     return await service.get('/logout')
+  },
+  medSearch: async (name) =>{
+    return await service.get(`/medicine/search/${name}`)
   }
 };
 

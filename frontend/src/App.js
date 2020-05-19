@@ -4,6 +4,7 @@ import Home from './components/home/Home';
 import NotFound from './components/404/NotFound.js';
 import SignUp from './components/auth/SignUp';
 import LogIn from './components/auth/LogIn';
+import RandomComponent from './components/RandomComp'
 import Profile from './components/profile/Profile'
 import actions from './services/index'
 
@@ -48,6 +49,7 @@ class App extends Component {
       </nav>
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route exact path="/medicine/search" render={(props) => <RandomComponent {...props} setUser={this.setUser} />}/>
         <Route exact path="/sign-up" render={(props)=><SignUp {...props} setUser={this.setUser} />} />
         <Route exact path="/log-in" render={(props) => <LogIn {...props} setUser={this.setUser}/>} />
         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state}/>} />

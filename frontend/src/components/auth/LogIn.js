@@ -4,8 +4,14 @@ import actions from '../../services/index'
 class LogIn extends Component {
 
     state = {
-
+      
     } 
+    componentDidMount() {
+        actions.logIn({email:'chadrickj8@gmail.com', password:'Designer2'}).then(user => {
+            this.props.setUser({ ...user.data })
+        }).catch(({ response }) => console.error(response.data));
+    }
+
     handleChange = e => this.setState({[e.target.name]: e.target.value})
 
     handleSubmit = e => {

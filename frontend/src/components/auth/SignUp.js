@@ -11,7 +11,8 @@ class SignUp extends Component {
         e.preventDefault()
             actions.signUp(this.state).then(user=> {
                 this.props.setUser({...user.data})  
-            }).catch(({ response }) => console.error(response.data));
+            // }).catch(({ response }) => console.error(response.data));
+            }).catch(err=>console.log(err))
     }
     render() {
         return (
