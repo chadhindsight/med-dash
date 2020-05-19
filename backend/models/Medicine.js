@@ -2,24 +2,16 @@ const mongoose = require('mongoose');
 
 // Model for the collection of medicine
 const MedSchema = mongoose.Schema({
-    name: {
+   uniqueID: String,
+    drugName: String,
+    condition: String,
+    review: String,
+    rating: String,
+    date: {
         type: String,
         required: true,
-        trim: true
     },
-    description: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    refills: {
-        type: Number,
-        required: true,
-        default: 0
-        },
-    available: Boolean,
-    // Multiple users might be associated with the same medication
-    user_id: [String]
+    usefulCount: String
 })
 
-module.exports = model('Medicine', userSchema);
+module.exports = mongoose.model('Medicine', MedSchema);
