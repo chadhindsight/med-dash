@@ -62,6 +62,7 @@ app.use(cookieParser());
 app.use(logger('dev'));
 
 const index = require('./routes/index');
+const medicine = require('./routes/medicine');
 const auth = require('./routes/auth');
 app.use('/', index);
 app.use('/', auth);

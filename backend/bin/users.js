@@ -36,7 +36,7 @@ const users = [
         medications: ['5ec403fb3585906a9c4aa044', "5ec403fb3585906a9c4aa05d"]
     },
     {
-        email: 'DJceecee@hotmail.com',
+        email: 'DJceecee@gmail.com',
         name: 'Cirian Murphy',
         primaryPharmacy: "Walgreens",
         medications: ["5ec403fb3585906a9c4aa04a", '5ec403fb3585906a9c4aa044', '5ec403fb3585906a9c4aa056'],

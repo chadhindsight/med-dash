@@ -20,4 +20,11 @@ router.get('/medicine/:id', (req, res) =>{
     })
 })
 
+// Order and schedule delivery
+router.get('/medicine/:id/order', (req, res) => {
+    Medicine.findById(req.params.id).then(medicine => {
+        res.json({ medicine })
+    })
+})
+
 module.exports = router;
