@@ -5,6 +5,7 @@ const userSchema = new Schema(
   {
     email: String,
     name: String,
+    medications: [Object],
   },
   {
     timestamps: true,
