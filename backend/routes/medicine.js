@@ -12,21 +12,15 @@ router.get('/medicine/search/:name', isAuth, (req, res, next) => {
          'drugName': { '$regex': req.params.name, '$options': 'i' } 
 
     }).then(med => {
-        // Check if the id of med matches any ids prescribed to user
+        // Check if the id of med matches any ids prescribed to this specific user
         console.log(med)
         User.find({medications:[med._id]})
     }).catch(err => console.log('Medication not found!'))
 })
 
-// Place your order, schedule delivery and update User orders in db
-router.get('/medicine/:id/order', (req, res) => {
-    Medicine.findById(req.params.id).then(medicine => {
-        // Check if that particular medicine id has been prescribed to User
-        let presciptionList = User.find({medications: [medicine]})
-        
-        res.json({ medicine })
-    })
-})
+// Add to cart, Place your order, schedule delivery and update User orders in db
+
+
 function isAuth(req, res, next) {
     req.isAuthenticated() ? next() : res.status(304).json({ msg: 'Log in first' });
 }
