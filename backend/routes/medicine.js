@@ -3,18 +3,16 @@ const router = express.Router();
 const Medicine = require('../models/Medicine')
 const User = require('../models/User')
 
-// Search for med & check if it is prescribed to the user currently logged in. Maybe combine with route on line 20
+// Search for med & check if it is prescribed to the user currently logged in.
 router.get('/medicine/search/:name', isAuth, (req, res, next) => {
     console.log(req.user)
 
-    let search = `".*${req.params.name}*."`
     Medicine.findOne({
          'drugName': { '$regex': req.params.name, '$options': 'i' } 
-
     }).then(med => {
         // Check if the id of med matches any ids prescribed to this specific user
-        console.log(med)
-        User.find({medications:[med._id]})
+        // console.log(med)
+        User.find({medications:[med._id]}).then(x => res.json({med}))
     }).catch(err => console.log('Medication not found!'))
 })
 
