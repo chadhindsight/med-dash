@@ -4,7 +4,7 @@ import actions from '../services/index'
 
 class RandomComp extends Component {
     async componentDidMount() {
-        let res = await actions.medSearch('X')
+        let res = await actions.medSearch('ca')
         console.log(res)
     }
 
