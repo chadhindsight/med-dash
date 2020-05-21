@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import actions from '../services/index'
-
+import { Link} from 'react-router-dom';
 
 class RandomComp extends Component {
+   
+    //This is only a class comp becuase I need access to componentDidMount :(
     async componentDidMount() {
-        let res = await actions.medSearch('ca')
-        console.log(res)
+        await this.props.onSearch()
     }
-
+   
+// Bactrim
     render() {
+        console.log(this.props.result)
         return (
             <div>
-                Hello
+                <Link to="/medicine/order"><button onClick={() => this.props.addToCart()}>Add to cart</button></Link>
             </div>
         );
     }

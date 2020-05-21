@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Profile = (props) => {
     if(!props.user.email){ 
@@ -8,6 +9,7 @@ const Profile = (props) => {
         <div>
             Profile
             Welcome {props.user.email} !!! 
+            <Link to="/profile/edit"><button className="btn-primary">Edit Profile</button></Link> 
         </div>
     );
 }

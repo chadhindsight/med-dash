@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import actions from '../../services/index'
+// import actions from '../../services/index'
 
 
 class Home extends Component {

@@ -7,7 +7,7 @@ class LogIn extends Component {
       
     } 
     componentDidMount() {
-        actions.logIn({email:'chadrickj8@gmail.com', password:'Designer2'}).then(user => {
+        actions.logIn({ email:'bradhindsight@yahoo.com', password:'Designer2'}).then(user => {
             this.props.setUser({ ...user.data })
         }).catch(({ response }) => console.error(response.data));
     }
