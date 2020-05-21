@@ -7,6 +7,7 @@ const userSchema = new Schema(
     name: String,
     primaryPharmacy: String,
     medications: [String],
+    order: [Object]
   },
   {
     timestamps: true,

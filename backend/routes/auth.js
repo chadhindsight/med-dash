@@ -40,19 +40,13 @@ router.get('/profile', isAuth, (req, res, next) => {
     .catch((err) => res.status(500).json({ err }));
 });
 
-// Edit User Route
+// This is the route to edit a user's profile
 router.post('/profile/edit', isAuth, (req, res, next) =>{
   User.findByIdAndUpdate(req.user._id, req.body, {new: true})
     .then((user) => res.status(200).json({ user }))
     .catch((err) => res.status(500).json({ err }));
 })
 
-// View Cart
-router.post('/profile/cart', isAuth, (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, req.body, { new: true })
-    .then((user) => res.status(200).json({ user }))
-    .catch((err) => res.status(500).json({ err }));
-})
 
 function isAuth(req, res, next) {
   req.isAuthenticated() ? next() : res.status(304).json({ msg: 'Log in first' });

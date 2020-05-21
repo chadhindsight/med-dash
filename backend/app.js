@@ -27,7 +27,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://distracted-noyce-fee0e2.netlify.com"] //Swap this with the client url 
+    origin: ["http://localhost:3000", "http://localhost:3001", "https://distracted-noyce-fee0e2.netlify.com"] //Swap this with the client url 
   })
 );
 
@@ -66,6 +66,7 @@ const medicine = require('./routes/medicine');
 const auth = require('./routes/auth');
 app.use('/', index);
 app.use('/', auth);
+app.use('/', medicine);
 
 // Uncomment this line for production
 let client = path.join(__dirname + '../public/index.html')
