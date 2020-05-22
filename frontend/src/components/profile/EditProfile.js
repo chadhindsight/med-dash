@@ -11,7 +11,8 @@ let inputs = [
     {
         type: 'text',
         name: 'name'
-    }, {
+    }, 
+    {
         type: 'password',
         name: 'password'
     }, 
