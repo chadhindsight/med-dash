@@ -25,12 +25,16 @@ const actions = {
     return await service.get(`/medicine/search/${name}`)
   },
   //Add to a user's cart
-  addOrder: async(order) => {
+  addOrder: async() => {
     return await service.get('/medicine/order')
   },
   // Process Checkout and add to specific user's order array on db
-  checkout: async(order) => {
-    return await service.post('/medicine/order')
+  checkout: async(med) => {
+    return await service.post(`/medicine/order`, med)
+  },
+
+  getProfile: async(user) => {
+    return await service.get('/profile')
   },
   editProfile: async (order) => {
     return await service.post('/profile/edit')

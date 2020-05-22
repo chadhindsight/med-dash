@@ -9,18 +9,29 @@ import Profile from './components/profile/Profile'
 import EditProfile from './components/profile/EditProfile'
 import actions from './services/index'
 import Order from './components/Order'
+
 class App extends Component {
   
   state = {
-    searchResult: {},
-    cart: []
+    searchResult: {}
   }
   
   async componentDidMount() {
     let user = await actions.isLoggedIn()
-    this.setState({...user.data})
-    console.log('coolest ')
+    let editable = Object.keys(user.data).reduce((a,v) => (a[v+'Edit']=false,a), {})
+    this.setState({...user.data, edit: {...user.data, ...editable}})
+    console.log('coolest ', editable)
 
+  }
+
+  // TODO: get user info from DB?
+  onUserEditHandler = (e) => {
+    this.setState(prevState => ({
+      edit: {
+        ...prevState.edit,
+        [`${e.target.name}`]: e.traget.value
+      }
+    }))  
   }
 
   setUser = (user) => this.setState(user)
@@ -34,14 +45,18 @@ class App extends Component {
   onSearch = async() => {
     let res = await actions.medSearch('Bactrim')
     this.setState({ searchResult: res.data })
-    console.log(this.state.searchResult)
+    // console.log(this.state.searchResult)
   }
   
   addToCart = () => {
-    let newCart = this.state.cart.push(this.state.searchResult)
-    this.setState({ cart:  newCart})
-    console.log(this.state.cart)
+    this.setState({ cart: this.state.searchResult})
   }
+
+  placeOrder = async (e) => {
+    console.log(this.state.searchResult)
+    await actions.checkout(this.state.searchResult.med)
+  }
+  
   render(){
 
     return (
@@ -69,10 +84,12 @@ class App extends Component {
             result={this.state.searchResult} onSearch={this.onSearch} addToCart={this.addToCart} setUser={this.setUser} />}/>
         <Route exact path="/sign-up" render={(props)=><SignUp {...props} setUser={this.setUser} />} />
         <Route exact path="/log-in" render={(props) => <LogIn {...props} setUser={this.setUser}/>} />
-        <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state}/>} />
-          <Route exact path="/medicine/order" render={(props) => <Order cart={this.state.cart}{...props} cart={this.state.cart}
+        <Route exact path="/profile" render={(props) => <Profile {...props}  user={this.state}/>} 
+        profileDate={this.state.profileDate}/>
+          <Route exact path="/medicine/order" render={(props) => <Order placeOrder={this.placeOrder}{...props} 
              />} />
-          <Route exact path="/profile/edit" render={(props) => <EditProfile {...props} user={this.state} />} />
+          <Route exact path="/profile/edit" render={(props) => <EditProfile {...props} 
+          onUserEdit={this.onUserEditHandler} user={this.state} />} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

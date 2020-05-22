@@ -13,6 +13,7 @@ class RandomComp extends Component {
         console.log(this.props.result)
         return (
             <div>
+                <h3>Your Medication</h3>
                 <Link to="/medicine/order"><button onClick={() => this.props.addToCart()}>Add to cart</button></Link>
             </div>
         );

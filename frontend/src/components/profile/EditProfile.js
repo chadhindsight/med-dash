@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
 import actions from '../../services/index'
+import InputEdit from './InputEdit';
+// Array of objects
+// 'name','primaryPharmacy', 'password'
+let inputs = [
+    {
+        type: 'email',
+        name: 'email'
+    }, 
+    {
+        type: 'text',
+        name: 'name'
+    }, {
+        type: 'password',
+        name: 'password'
+    }, 
+    // Find a pharmacy using maps maybe
+    {
+        type: 'search',
+        name: 'primaryPharmacy'
+    }
+]
 
 class EditProfile extends Component {
     state = {
@@ -7,16 +28,10 @@ class EditProfile extends Component {
     }
     handleSubmit = async e => {
         e.preventDefault()
-        
-        this.setState({
-            email: '',
-            password: '',
-            name: '',
-            primaryPharmacy: '',
-            medications: []
-        })
-
         await actions.editProfile(this.state).then(res=>console.log(res.data))
+    }
+    displayInputField = () => {
+        
     }
 
     handleChange = (e) => {
@@ -25,15 +40,10 @@ class EditProfile extends Component {
         })
     }
     render() {
+        console.log(this.props)
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input name ="email" placeholder="email"/>
-                    <input name="password"  placeholder="updated password"/>
-                    <input name="name" placeholder="Name" />
-                    <input name="primaryPharmacy" placeholder="Pharmacy" />
-                    <input name="medications" placeholder="Prescribed Medications" />
-                </form>
+             
             </div>
         );
     }
